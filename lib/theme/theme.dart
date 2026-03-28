@@ -30,8 +30,17 @@ final ThemeData darkTheme = ThemeData(
       color: SpaceXColors.caption,
     ),
 
-    // Title 2
+    // Date text
     bodyLarge: TextStyle(
+      fontFamily: GoogleFonts.inter().fontFamily,
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      height: 1.0,
+      color: SpaceXColors.accent,
+    ),
+
+    // Title 2
+    titleMedium: TextStyle(
       fontFamily: GoogleFonts.inter().fontFamily,
       fontWeight: FontWeight.w500,
       fontSize: 20,
@@ -45,7 +54,7 @@ final ThemeData darkTheme = ThemeData(
       fontWeight: FontWeight.w500,
       fontSize: 24,
       height: 1.3,
-      color: SpaceXColors.accent,
+      color: SpaceXColors.title,
     ),
   ),
   appBarTheme: AppBarTheme(
@@ -57,7 +66,7 @@ final ThemeData darkTheme = ThemeData(
       color: SpaceXColors.title,
     ),
     titleSpacing: 20,
-    backgroundColor: SpaceXColors.background, // або AppColors.background
+    backgroundColor: SpaceXColors.background,
     elevation: 0,
     centerTitle: true,
   ),

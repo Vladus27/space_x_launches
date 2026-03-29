@@ -1,49 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:space_x_launches/features/home/widgets/home_card.dart';
-import 'package:space_x_launches/features/home/widgets/home_carousel_slider.dart';
-import 'package:space_x_launches/features/home/widgets/home_indicator_dots.dart';
+import 'package:space_x_launches/features/home/widgets/home_content.dart';
+import 'package:space_x_launches/providers/rocket_provider.dart';
+import 'package:space_x_launches/repositories/space_rocket/model/rocket.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncRockets = ref.watch(rocketsProvider);
+    List<Rocket> rocketsList;
+
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(title: const Text('SpaceX Launches')),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 24),
-                child: Text(
-                  'SpaceX Launches',
-                  style: theme.textTheme.titleLarge,
-                ),
-              ),
-            ),
-            const HomeCarouselSlider(),
-            const SizedBox(height: 12),
-            const HomeIndicatorDots(),
-
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: Text('Missions', style: theme.textTheme.titleLarge),
-            ),
-
-            Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                itemCount: 13,
-                itemBuilder: (context, index) {
-                  return const HomeCard();
-                },
-              ),
-            ),
-          ],
+        body: asyncRockets.when(
+          data: (result) {
+            if (!result.isSuccess) {
+              return Center(child: Text(result.error!.message));
+            }
+            rocketsList = result.data!;
+            return HomeContent(rocketsList: rocketsList);
+          },
+          error: (e, _) {
+            return Center(child: Text(e.toString()));
+          },
+          loading: () => const Center(child: CircularProgressIndicator()),
         ),
       ),
     );

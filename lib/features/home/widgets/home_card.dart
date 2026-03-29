@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:space_x_launches/repositories/rocket_launches/model/rocket_launch.dart';
 
 class HomeCard extends StatelessWidget {
-  const HomeCard({super.key});
+  const HomeCard({super.key, required this.rocketLaunch});
+  final RocketLaunch rocketLaunch;
 
   @override
   Widget build(BuildContext context) {
@@ -15,9 +17,12 @@ class HomeCard extends StatelessWidget {
             Column(
               crossAxisAlignment: .start,
               children: [
-                Text('10/06/2023', style: theme.textTheme.bodyLarge),
+                Text(
+                  rocketLaunch.launchDate.formattedDate,
+                  style: theme.textTheme.bodyLarge,
+                ),
                 const SizedBox(height: 4),
-                const Text('06:34 PM'),
+                Text(rocketLaunch.launchDate.formattedTime),
               ],
             ),
             const SizedBox(width: 21),
@@ -26,13 +31,11 @@ class HomeCard extends StatelessWidget {
                 crossAxisAlignment: .start,
                 children: [
                   Text(
-                    'Falcon Heavy Test ',
+                    rocketLaunch.missionName,
                     style: theme.textTheme.titleMedium,
                   ),
                   const SizedBox(height: 4),
-                  const Text(
-                    'Kennedy Space Center Historic Launch Complex 39A',
-                  ),
+                  Text(rocketLaunch.description),
                 ],
               ),
             ),

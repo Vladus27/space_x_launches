@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:space_x_launches/space_x_launch_app.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
-  runApp(const SpaceXLaunchApp());
+  runApp(const ProviderScope(child: SpaceXLaunchApp()));
 }

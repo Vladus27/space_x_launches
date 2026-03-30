@@ -1,17 +1,46 @@
-# space_x_launches
+# SpaceX Launches
 
-A new Flutter project.
+Flutter application that displays SpaceX rocket launches.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
+- View list of SpaceX rockets via carousel slider
+- Browse launches for selected rocket
+- Launch details (date, mission, location)
+- Open Wikipedia page for each launch
+- Smooth UI with loading & error states
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Flutter**
+- **Riverpod** (state management)
+- **Dio** (networking)
+- **flutter_dotenv** (environment variables)
+- **intl** (date formatting)
+- **google_fonts** (app theme)
+- **url_launcher** (open external links)
+
+## Architecture
+```
+lib/
+├── features/
+│ └── home/
+│   ├── view/
+│   └── widgets/
+├── repositories/
+│ ├── rocket_launches/
+│ |  └── model/
+│ └── space_rocket/
+│     └── model/
+├── providers/
+└── theme/
+```
+
+## Preview
+https://github.com/user-attachments/assets/bedff7f4-f2f2-43e5-a9d0-2c32e79c32ec
+
+
+
+
+

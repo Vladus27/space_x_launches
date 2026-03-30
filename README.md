@@ -1,8 +1,6 @@
-# space_x_launches
+# SpaceX Launches
 
 Flutter application that displays SpaceX rocket launches.
-
-## Getting Started
 
 ## Features
 
@@ -38,4 +36,11 @@ lib/
 ├── providers/
 └── theme/
 ```
+
+## Preview
+https://github.com/user-attachments/assets/bedff7f4-f2f2-43e5-a9d0-2c32e79c32ec
+
+
+
+
 
